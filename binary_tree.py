@@ -31,6 +31,31 @@ class BinaryTree(object):
             else:
                 self.insertNode(data, root_node.right_node)
 
+
+## iteratve solution
+    def insert(self, val):
+        cur = self.root
+        if not cur:
+            self.root = Node(val)
+            return self.root
+
+        while cur:
+            if cur.info > val:
+                if cur.left:
+                    cur = cur.left
+                else:
+                    cur.left = Node(val)
+                    break
+            else:
+                if cur.right:
+                    cur = cur.right
+                else:
+                    cur.right = Node(val)
+                    break
+
+        return self.root
+
+
     def traverse_min(self):
         if self.root:
             return  self.get_node_min(self.root)
@@ -60,13 +85,15 @@ class BinaryTree(object):
 
 
     def traverse_in_order(self,node):
-        if node.left_node:
-            self.traverse_in_order(node.left_node)
-
-        print(node.data)
 
         if node.right_node:
             self.traverse_in_order(node.right_node)
+
+        print(node.data)
+
+        if node.left_node:
+            self.traverse_in_order(node.left_node)
+
 
     def traverse_pre_order(self):
         if self.root:
@@ -108,6 +135,7 @@ tree.insert(6)
 tree.insert(1)
 tree.insert(9)
 tree.insert(8)
-print(tree.height())
+tree.traverse();
+# print(tree.height())
 
 

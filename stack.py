@@ -1,45 +1,23 @@
-class Stack:
-    def __init__(self):
-        self.stack = []
-
-    def is_empty(self):
-        return self.stack==[]
-
-    def pop(self):
-        if not self.stack:
-            return  "stack is empty"
-
-        last_item = self.stack[-1]
-        del self.stack[-1]
-        return last_item
-
-
-    def push(self,item):
-        self.stack.append(item)
-
-    def peek(self):
-        if not self.stack:
-            return  "stack is empty"
-
-        return  self.stack[-1]
-
-    def get_size(self):
-        return len(self.stack)
+#python 3
+items = [0]
+for i in range(int(input())):
+    nums = list(map(int, input().split()))
+    if nums[0] == 1:
+        items.append(max(nums[1], items[-1]))
+    elif nums[0] == 2:
+        items.pop()
+    else:
+        print(items[-1])
 
 
 
-stack = Stack()
-stack.push(1)
-stack.push(2)
-stack.push(3)
-print(stack.get_size())
-print(stack.pop())
-print(stack.pop())
-print(stack.pop())
-print(stack.pop())
-print(stack.peek())
-
-# stack.traverse()
-
-
-
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+arr =[]
+for _ in range(int(input())):
+    process = input().split()
+    if int(process[0])==1:
+        arr.append(int(process[1]))
+    if int(process[0])==2:
+        del arr[-1]
+    if int(process[0])==3:
+        print(arr[-1])
