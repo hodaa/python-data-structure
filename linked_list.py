@@ -10,7 +10,19 @@ class LinkedList(object):
         self.size = 0
         self.head = None
 
-    # 0(1)
+    def reverse(self):
+        prev = None
+        current = self.head
+        while current is not None:
+            next = current.nextNode
+            current.nextNode = prev
+            prev = current
+            current = next
+        #
+        self.head = prev
+
+
+        # 0(1)
     def insert_start(self, data):
         self.size += 1
         newNode = Node(data)
@@ -72,13 +84,19 @@ class LinkedList(object):
 
 
 linked_list = LinkedList()
-linked_list.insert_start(1)
-linked_list.insert_start(3)
+# linked_list.insert_start(1)
+# linked_list.insert_start(2)
+linked_list.insert(1)
 linked_list.insert(2)
+linked_list.insert(3)
+linked_list.insert(4)
+
 # print(linked_list.traverse())
 # print(linked_list.get_size())
-linked_list.remove(1)
-linked_list.remove(2)
+# linked_list.remove(1)
+# linked_list.remove(2)
 # linked_list.remove(3)
-print(linked_list.traverse())
-print(linked_list.get_size())
+# linked_list.traverse()
+linked_list.reverse()
+linked_list.traverse()
+# print(linked_list.get_size())

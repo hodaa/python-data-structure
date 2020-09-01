@@ -10,7 +10,7 @@ class MaxHeap(object):
         if self.isFull():
             print("The Heap is full")
             return
-        self.currentPosition+=1
+        self.currentPosition +=1
         self.heap[self.currentPosition] =item
         self.fixUp(self.currentPosition)
 
@@ -23,16 +23,13 @@ class MaxHeap(object):
 
     def fixUp(self,index):
         parentIndex =int((index-1)/2)
-        while parentIndex >=0 and  self.heap[parentIndex] < self.heap[index]:
+        while parentIndex >=0  and  self.heap[parentIndex] < self.heap[index]:
             temp = self.heap[index]
             self.heap[index] = self.heap[parentIndex]
             self.heap[parentIndex] = temp
-            # parentIndex = int((index - 1) / 2)
+            parentIndex = int((index - 1) / 2)
 
     def list(self):
-        print(self.currentPosition)
-        print(self.heap[self.currentPosition])
-
         print(self.heap)
 
 
@@ -60,19 +57,6 @@ def print_min():
     heap[0]
 
 
-cmds = {
-    1: push,
-    2: discard,
-    3: print_min
-}
-
-n = int(stdin.readline())
-for _ in range(n):
-    data = map(int, stdin.readline().split(" "))
-    cmds[data[0]](*data[1:])
-
-
-
 
 heap =MaxHeap()
 heap.insert(11)
@@ -80,7 +64,7 @@ heap.insert(1)
 heap.insert(2)
 heap.insert(3)
 heap.insert(10)
-heap.list()
+print(heap.list())
 
 
 
