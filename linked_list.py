@@ -2,6 +2,7 @@ class Node(object):
     def __init__(self, data):
         self.data = data
         self.nextNode = None
+        self.index= 0
 
 
 class LinkedList(object):
@@ -9,15 +10,24 @@ class LinkedList(object):
     def __init__(self):
         self.size = 0
         self.head = None
+        self.index= 0
 
     def reverse(self):
         prev = None
         current = self.head
+        index =self.size-1
         while current is not None:
             next = current.nextNode
             current.nextNode = prev
             prev = current
+            #
+            current.index = index
+            index -=1
+            #
             current = next
+
+
+
         #
         self.head = prev
 
@@ -56,8 +66,11 @@ class LinkedList(object):
             last_node = self.head
             while last_node.nextNode is not None:
                 last_node = last_node.nextNode
+                self.index +=1
 
             last_node.nextNode = new_node
+            last_node.index = self.index
+
 
     def traverse(self):
         this_node = self.head
@@ -82,6 +95,25 @@ class LinkedList(object):
         else:
             previous_node.nextNode = current_node.nextNode
 
+    def getNodeIndex(self,node):
+        current = self.head
+        while current is not None:
+            if current.data  == node:
+                return current.index
+
+            current = current.nextNode
+
+    def getNodeValue(self, index):
+        current = self.head
+        while current is not None:
+            if current.index == index:
+                return current.data
+
+            current = current.nextNode
+
+    def test(self):
+        Node.right="hoda";
+
 
 linked_list = LinkedList()
 # linked_list.insert_start(1)
@@ -90,6 +122,7 @@ linked_list.insert(1)
 linked_list.insert(2)
 linked_list.insert(3)
 linked_list.insert(4)
+linked_list.insert(5)
 
 # print(linked_list.traverse())
 # print(linked_list.get_size())
@@ -98,5 +131,8 @@ linked_list.insert(4)
 # linked_list.remove(3)
 # linked_list.traverse()
 linked_list.reverse()
-linked_list.traverse()
+# linked_list.traverse()
+print(linked_list.getNodeIndex(1))
+print(linked_list.getNodeValue(2))
+linked_list.test()
 # print(linked_list.get_size())
