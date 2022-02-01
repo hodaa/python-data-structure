@@ -102,7 +102,7 @@ class AVL(object):
         if self.root:
             self.travers_in_order_node(self.root)
 
-   private def travers_in_order_node(self,node):
+     def travers_in_order_node(self,node):
         if node.left_node:
              self.travers_in_order_node(node.left_node)
 
