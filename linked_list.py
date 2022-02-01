@@ -78,6 +78,14 @@ class LinkedList(object):
             print('%d' % this_node.data)
             this_node = this_node.nextNode
 
+    def remove_head(self):
+        if self.head is None:
+            return
+        
+        current_node = self.head
+        self.head = current_node.nextNode
+
+
     def remove(self, data):
         if self.head is None:
             return
@@ -111,8 +119,8 @@ class LinkedList(object):
 
             current = current.nextNode
 
-    def test(self):
-        Node.right="hoda";
+    # def test(self):
+    #     Node.right="hoda";
 
 
 linked_list = LinkedList()
@@ -127,12 +135,13 @@ linked_list.insert(5)
 # print(linked_list.traverse())
 # print(linked_list.get_size())
 # linked_list.remove(1)
+linked_list.remove_head()
 # linked_list.remove(2)
 # linked_list.remove(3)
 # linked_list.traverse()
-linked_list.reverse()
-# linked_list.traverse()
-print(linked_list.getNodeIndex(1))
-print(linked_list.getNodeValue(2))
-linked_list.test()
+# linked_list.reverse()
+linked_list.traverse()
+# print(linked_list.getNodeIndex(1))
+# print(linked_list.getNodeValue(2))
+# linked_list.test()
 # print(linked_list.get_size())
